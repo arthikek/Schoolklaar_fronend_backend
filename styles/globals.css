@@ -1,0 +1,420 @@
+
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff !important;
+}
+
+
+/* BASIC */
+
+html {
+  min-height: 100vh;
+
+}
+
+
+.chartcontainer{
+padding-left: 300px;
+}
+
+.chart-container {
+  position: relative; 
+  height:40vh; 
+  width:80vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+width: 100%;
+height: 100%;
+}
+
+
+a {
+
+  display:inline-block;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+h2 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display:inline-block;
+  margin: 40px 8px 10px 8px; 
+  color: #cccccc;
+}
+
+.container.mt-3 {
+  background-color: #ffffff !important;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
+}
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+background-color: #f3f3f3;
+color: #000000;
+text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+border-bottom: 2px solid #56b6ed;
+}
+.styled-table tbody tr.active-row {
+font-weight: bold;
+color: #56b6ed;
+}
+/* STRUCTURE */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+}
+
+
+
+/* TABS */
+
+h2.inactive {
+  color: #cccccc;
+}
+
+h2.active {
+  color: #0d0d0d;
+  border-bottom: 2px solid #5fbae9;
+}
+
+
+/* Override browser's autofill styles */
+body input:-webkit-autofill,
+body input:-webkit-autofill:hover,
+body input:-webkit-autofill:focus,
+body textarea:-webkit-autofill,
+body textarea:-webkit-autofill:hover,
+body textarea:-webkit-autofill:focus,
+body select:-webkit-autofill,
+body select:-webkit-autofill:hover,
+body select:-webkit-autofill:focus {
+  background-color: #ffffff !important; /* Set background to white */
+  border: 0px solid #ffffff; /* or whatever border you want */
+  -webkit-text-fill-color: #0d0d0d; /* or whatever text color you want */
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s; /* This is to prevent the rapid color change on input focus */
+}
+
+
+/* FORM TYPOGRAPHY*/
+.checkbox-container::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: #cacaca; /* or any color for the checkmark */
+  transform: scale(0) rotate(45deg);
+  transition: transform 0.3s ease;
+  top: 50%;
+  left: 50%;
+  /* Adjust these values to position the checkmark correctly */
+  transform-origin: center center;
+  border-width: 0 2px 2px 0;
+  border-style: solid;
+  border-color: #c4c4c4;
+}
+
+input[type="checkbox"]:checked ~ .checkbox-container::before {
+  transform: scale(1) rotate(45deg);
+}
+.custom-form {
+  font-family: Arial, sans-serif;
+}
+
+.custom-checkbox {
+  margin-bottom: 10px;
+}
+
+.custom-checkbox label {
+  display: flex;
+  align-items: center;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #c1c1c1;
+  margin-right: 10px;
+  position: relative;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-circle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: #5fbae9;
+  border-color: #dbdada;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.left-align .chart-container {
+  justify-content: flex-start;
+}
+
+
+
+
+
+/* ANIMATIONS */
+
+/* Simple CSS3 Fade-in-down Animation */
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fadeIn {
+  opacity:0;
+  -webkit-animation:fadeIn ease-in 1;
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+.fadeIn.first {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+  padding: 0.2cm;
+  
+}
+
+.fadeIn.second {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+.fadeIn.third {
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+
+.fadeIn.fourth {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
+  background-color: gray;
+}
+
+/* Simple CSS3 Fade-in Animation */
+.underlineHover:after {
+  display: block;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 2px;
+  background-color: #56baed;
+  content: "";
+  transition: width 0.2s;
+}
+
+.underlineHover:hover {
+  color: #0d0d0d;
+}
+
+.underlineHover:hover:after{
+  width: 100%;
+}
+
+
+
+/* OTHERS */
+
+*:focus {
+    outline: none;
+} 
+
+#icon {
+  width:60%;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+/* Scrollbar styling */
+
+
+/* The scrollbar itself */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px; /* Adjust width as needed */
+  padding-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px
+}
+
+/* The draggable scrolling handle */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #6FB4E8; /* Color of the scroll thumb */
+  border-radius: 5px; /* Rounded corners on the thumb */
+  width: 10px; /* Adjust the width of the thumb */
+  height: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px
+  
+}
+
+/* The track (progress bar) of the scrollbar */
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color of the track */
+  border-radius: 5px; /* Rounded corners on the track */
+  margin-top: 10vh;
+  margin-bottom: 10vh
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #6FB4E8 #f1f1f1;
+  padding-left: 10px;
+}
+
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 10px hsl(var(--primary)); */
+    border-radius: 10px;
+    @apply bg-white/80;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    @apply bg-primary;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/70;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border ring-ring;
+  }
+  *:hover {
+    @apply transition-all;
+  }
+  html {
+    --scroll-behavior: smooth !important;
+    scroll-behavior: smooth !important;
+  }
+  body {
+    @apply bg-background text-foreground; 
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
