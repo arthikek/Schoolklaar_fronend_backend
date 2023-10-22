@@ -42,17 +42,17 @@ export default function PageMenu() {
                 text="Log Sessie"
             />
 
-            <MenuLink 
+            {/* <MenuLink 
                 activeRoute={activeRoute}
                 route="voeg-leerling-toe"
                 link="/authenticated/voeg-leerling-toe"
                 icon={<Icons.userPlus  className = 'text-[#62C8F4]'/>}
                 text="Voeg Leerling Toe"
-            />
+            /> */}
 
             <MenuLink 
                 activeRoute={activeRoute}
-                route="leerling-details"
+                route="Overzicht leerlingen"
                 link="/authenticated/leerling-details"
                 icon={<Icons.contact className = 'text-[#62C8F4]'/>}
                 text="Leerling Details"

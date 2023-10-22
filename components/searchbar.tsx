@@ -60,6 +60,7 @@ export default function SearchBar({ className }: any) {
                     className='w-full text-dark bg-white ml-3'
                     placeholder="Zoek Op School ..." 
                     value={query}
+                    onChange={(e) => setQuery(e.target.value)} // Added onChange handler here
                 />
 
         </div>

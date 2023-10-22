@@ -46,8 +46,7 @@ export default function AddStudent(){
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        console.log('name', name) 
-        console.log('value', value)
+
         setFormData(prevState => ({
             ...prevState,
             [name]: value
@@ -66,7 +65,6 @@ export default function AddStudent(){
 
     };
 
-    console.log('form', formData)
     const submitFormUserDetails = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         e.stopPropagation();
@@ -76,7 +74,7 @@ export default function AddStudent(){
             toast.success('Bericht Gestuurd!');
         } 
         catch (err) {
-            console.log('err', err)
+     
             toast.error(`Niet gelukt om gegevens te updaten: ${err}`);
         }
         setIsLoading(false);

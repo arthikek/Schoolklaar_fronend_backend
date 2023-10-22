@@ -21,13 +21,13 @@ export default async function Documents() {
         setIsLoading(true)
         async function getMateriaal () {
           try {
-              console.log('executed')
+              
               const materiaalfetch = await fetchIndividualMaterial(slug);
-              console.log('materiaal', materiaalfetch)
+              
               setIndividualMaterial(materiaalfetch)
           }
           catch (error) {
-            console.log('error', error)
+      
             throw error
           }
           finally {
@@ -38,7 +38,6 @@ export default async function Documents() {
       }, [])
 
 
-    console.log(individualMaterial)
     return (
         <section className="min-h-screen w-full pb-20">
               <ToastContainer />
@@ -65,7 +64,7 @@ export default async function Documents() {
             setSetLength(50)
         }
     }
-    console.log(process.env.NEXTAUTH_BACKEND_URL)
+
 
     return (
       <div className='flex flex-row justify-between items-center max-w-[1200px] border-b-[1px] border-[#CBCBCB]'>

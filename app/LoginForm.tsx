@@ -17,7 +17,7 @@ const LoginForm = () => {
 
   const handleGoogleSignIn = () => {
     console.log("google sign in");
-    signIn("google", { callbackUrl: `${window.location.origin}/overzicht` });
+    signIn("google", { callbackUrl: `${window.location.origin}/authenticated/log-sessie` });
   };
 
   const handleSubmit = async (e : React.FormEvent<HTMLFormElement> ) => {
@@ -31,7 +31,7 @@ const LoginForm = () => {
         callbackUrl: `${window.location.origin}/authenticated/log-sessie`,
       });
     
-      console.log('signinresponse', signInResponse);
+     
       if (signInResponse && !signInResponse.ok) {
         const errorMessage = signInResponse.error ? signInResponse.error : "An unknown error occurred.";
         setErrorResponse({
@@ -42,7 +42,7 @@ const LoginForm = () => {
       }
     }
     catch (error) {
-      console.log('error', error)
+ 
     }
 
   };

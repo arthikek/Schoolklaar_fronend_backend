@@ -110,7 +110,7 @@ export const authOptions: NextAuthOptions = {
     },
 
     async session({ session, token, user }) {
-      console.log('session 2', session)
+    
       // Assign tokens to the session object
       session.accessToken = token.accessToken;
       session.refreshToken = token.refreshToken;

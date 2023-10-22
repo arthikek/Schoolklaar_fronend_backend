@@ -37,7 +37,7 @@ export const fetchGeneralContext = async (): Promise<any> => {
         });
     }
     catch (error) {
-        console.log('error', error)
+
     }
 
     if (!response.ok) {

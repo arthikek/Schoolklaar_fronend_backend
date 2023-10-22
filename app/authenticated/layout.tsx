@@ -55,7 +55,7 @@ export default function Layout({ children, params }: { children: React.ReactNode
     useEffect(() => {
         async function fetchStudentData() {
             try {
-                console.log('check')
+               
                 const generalContext: any = await fetchGeneralContext();
                 setGeneralContext(generalContext)
                 // setStudent(leerling);

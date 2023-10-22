@@ -27,7 +27,7 @@ export const fetchMaterial = async (): Promise<any> => {
     }
 
     const apiUrl = process.env.NEXTAUTH_BACKEND_URL_MODEL_API + "Login/api/materiaal_all/";
-    console.log('apiUrl', apiUrl)
+
 
 
     let response: any;
@@ -41,12 +41,12 @@ export const fetchMaterial = async (): Promise<any> => {
         });
     }
     catch (error) {
-        console.log('error', error)
+    
     }
 
     if (!response.ok) {
         signOut({ callbackUrl: "/" })
-        console.log('response', response.status)
+
         throw new Error("Network response was not ok");
     }
 
@@ -71,7 +71,7 @@ export const fetchIndividualMaterial = async (slug : any): Promise<any> => {
     }
 
     const apiUrl = `${process.env.NEXTAUTH_BACKEND_URL_MODEL_API}Login/api/materiaal_ind/?vak_slug=${slug}`;
-    console.log('apiUrl', apiUrl)
+
 
     
     let response: any;
@@ -85,12 +85,12 @@ export const fetchIndividualMaterial = async (slug : any): Promise<any> => {
         });
     }
     catch (error) {
-        console.log('error', error)
+
     }
 
     if (!response.ok) {
         signOut({ callbackUrl: "/" })
-        console.log('response', response.status)
+
         throw new Error("Network response was not ok");
     }
 

@@ -60,13 +60,13 @@ export default function CourseMaterial() {
       setIsLoading(true)
       async function getMateriaal () {
         try {
-            console.log('executed')
+           
             const materiaalfetch = await fetchMaterial();
-            console.log('materiaal', materiaalfetch)
+       
             setMateriaal(materiaalfetch)
         }
         catch (error) {
-          console.log('error', error)
+       
           throw error
         }
         finally {
@@ -81,7 +81,7 @@ export default function CourseMaterial() {
     ]
 
     const classPerSubject = processData(materiaal);
-    console.log(classPerSubject); 
+
 
     return (
       <section className="min-h-screen w-full pb-20">
@@ -103,7 +103,7 @@ export default function CourseMaterial() {
 function CourseComponent({item, classPerSubject} : any) {
   const num = classPerSubject.documentCountPerTitel[item] 
 
-  console.log('num', num)
+  
   return (
     <div className='flex flex-row justify-between items-center max-w-[1200px] border-b-[1px] border-[#CBCBCB]'>
 

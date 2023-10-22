@@ -5,8 +5,7 @@ export default async function SendRatingsForm(payload: any, token: string) {
         throw new Error('Access token not found'); // Error if no token is provided
     }   
     try {
-            console.log('payload', payload)
-            console.log('token', token)
+    
             // Making a POST request to the backend API to create a rating
             const response = await fetch("http://127.0.0.1:8000/Login/api/create_rating/", {
                 method: 'POST',

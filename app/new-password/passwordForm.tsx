@@ -17,7 +17,7 @@ const PasswordForm = () => {
   });
 
   const handleGoogleSignIn = () => {
-    console.log("google sign in");
+
     signIn("google", { callbackUrl: `${window.location.origin}/overzicht` });
   };
 
@@ -32,7 +32,7 @@ const PasswordForm = () => {
         callbackUrl: `${window.location.origin}/authenticated/overzicht`,
       });
     
-      console.log('signinresponse', signInResponse);
+
       if (signInResponse && !signInResponse.ok) {
         const errorMessage = signInResponse.error ? signInResponse.error : "An unknown error occurred.";
         setErrorResponse({
@@ -43,7 +43,7 @@ const PasswordForm = () => {
       }
     }
     catch (error) {
-      console.log('error', error)
+
     }
 
   };

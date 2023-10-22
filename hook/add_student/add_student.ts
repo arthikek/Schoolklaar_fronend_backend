@@ -5,8 +5,7 @@ export default async function SendAddStudent(payload: any, token: string) {
         throw new Error('Access token not found'); // Error if no token is provided
     }   
     try {
-            console.log('payload', payload)
-            console.log('token', token)
+     
             // Making a POST request to the backend API to create a rating
             const response = await fetch("http://127.0.0.1:8000/Login/api/add_student/", {
                 method: 'POST',
@@ -18,7 +17,7 @@ export default async function SendAddStudent(payload: any, token: string) {
             });
             
             if (response.status > 399) {
-                console.log('response', response.status)
+    
                 throw new Error("Network response was not ok");
             }
             const data = await response.json(); // Parse the response data from JSON
