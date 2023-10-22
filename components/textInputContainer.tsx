@@ -12,7 +12,7 @@ export default function TextInputContainer({input, handleInputChange} : any) {
             {input.map((text : any, index : number) => {
                 const title = text.title.toLowerCase().replace(/[^a-z0-9]+/g, '').replace(/\*$/, '')
                 return (
-                    <div>
+                    <div key={index}>
                         <Typography variant='muted' className="my-2 font-medium">{text.title}</Typography>
                     
                             {text.type === 'textArea' ? 
