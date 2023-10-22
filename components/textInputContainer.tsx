@@ -11,16 +11,16 @@ export default function TextInputContainer({
 
   // Extract the required data from the general context
 
-
   return (
     <>
       {/* Map over the input array to render different types of input fields */}
       {input.map((text: any, index: number) => {
         // Convert the title to a format suitable for the 'name' attribute of the input
-        const title = text.title
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "")
-          .replace(/\*$/, "");
+        const title = text.title === "Leerling" ? "Leerling" : text.title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "")
+        .replace(/\*$/, "");
+      
 
         return (
           <div key={index}>
@@ -39,7 +39,38 @@ export default function TextInputContainer({
                 key={index}
                 onChange={handleFileChange}
               />
-            )  : text.type === "customInput" ? (
+            ) : text.type === "range" ? (
+              // Render a custom dropdown based on the provided iterable (e.g., vakken, leerlingen)
+              <div className="border bg-white border-[#ABABAB] rounded-xl  p-4">
+                <select
+                  name={title}
+                  className={`w-full bg-white `}
+                  style={{ color: "#121212" }}
+                  onChange={handleInputChange}
+                >
+                  <option>
+                    <span className="text-dark/60">{text.placeHolder}</span>
+                  </option>
+                  {(() => {
+                    const options = [];
+                    if (text.iterable) {
+                      for (let i = 0; i < text.iterable.length; i++) {
+
+                        const it = text.iterable[i];
+                
+                        options.push(
+                          <option key={i} value={it}>
+                            {it}
+                          </option>
+                        );
+                      }
+                    }
+                   
+                    return options;
+                  })()}
+                </select>
+              </div>
+            ) : text.type === "customInput" ? (
               // Render a custom dropdown based on the provided iterable (e.g., vakken, leerlingen)
               <div className="border bg-white border-[#ABABAB] rounded-xl  p-4">
                 <select
@@ -52,7 +83,6 @@ export default function TextInputContainer({
                     <span className="text-dark/60">{text.placeHolder}</span>
                   </option>
                   {text.iterable?.map((it: any, index: any) => {
-                   
                     return (
                       <option key={index + 1} value={it.id}>
                         {it.naam}
@@ -61,30 +91,28 @@ export default function TextInputContainer({
                   })}
                 </select>
               </div>
-            ) 
-            : text.type === "nameInput" ? (
-                // Render a custom dropdown based on the provided iterable (e.g., vakken, leerlingen)
-                <div className="border bg-white border-[#ABABAB] rounded-xl  p-4">
-                  <select
-                    name={title}
-                    className={`w-full bg-white `}
-                    style={{ color: "#121212" }}
-                    onChange={handleInputChange}
-                  >
-                    <option>
-                      <span className="text-dark/60">{text.placeHolder}</span>
-                    </option>
-                    {text.iterable?.map((it:any, index: any) => {
-                    
-                      return (
-                        <option key={index + 1} value={it.id}>
-                          {it.naam+ " " + it.achternaam }
-                        </option>
-                      );
-                    })}
-                  </select>
-                </div>
-              ) : (
+            ) : text.type === "nameInput" ? (
+              // Render a custom dropdown based on the provided iterable (e.g., vakken, leerlingen)
+              <div className="border bg-white border-[#ABABAB] rounded-xl  p-4">
+                <select
+                  name={title}
+                  className={`w-full bg-white `}
+                  style={{ color: "#121212" }}
+                  onChange={handleInputChange}
+                >
+                  <option>
+                    <span className="text-dark/60">{text.placeHolder}</span>
+                  </option>
+                  {text.iterable?.map((it: any, index: any) => {
+                    return (
+                      <option key={index + 1} value={it.id}>
+                        {it.naam + " " + it.achternaam}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            ) : (
               // Render a default text input for other types
               <input
                 type={text.type}

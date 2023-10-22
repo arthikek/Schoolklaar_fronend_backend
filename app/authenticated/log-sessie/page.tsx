@@ -1,6 +1,7 @@
 
 
 'use client'
+import { signOut, useSession } from "next-auth/react";
 import TextInputContainer from "@/components/textInputContainer";
 import Typography from "@/components/typography";
 import { useGeneralContext } from "@/context/leerling-provider";
@@ -11,23 +12,42 @@ import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+type FormSessie = {
+    Leerling: number,
+    inzicht: number,
+    kennis: number,
+    vak: string,
+    werkhouding: number,
+    extra: string,
+    
+    [key: string]: string | number; 
+  };
+  
+  type ExtendedSession = {
+    accessToken?: string;
+  };
 
+  
 export default function LogSession(){
     const [isLoading, setIsLoading] = useState(false);
     const [ratings, setRatings] = useState({}); // State to manage ratings of subjects
 
 
-    const [formData, setFormData] = useState({
-        leerling: '',
-        inzicht: '',
-        kennis: '',
-        vak: '',
-        werkhouding: '',
-        extra: ''
+    const [formData, setFormData] = useState<FormSessie>(
+        {
+            Leerling: 2,
+            inzicht: 0,
+            kennis: 0,
+            vak: '',
+            werkhouding: 0,
+            extra: '',
+
     });
 
     const {reloaded, setReloaded} = useReloaded();
     const {generalContext } = useGeneralContext();
+    const { data: session } = useSession() as { data: ExtendedSession }; // Fetch the current session data using Next Auth's hook
+
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -45,37 +65,82 @@ export default function LogSession(){
 
 
     const submitFormUserDetails = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+    
         try {
-           
+          const formDataObj_2 = new FormData();
+          console.log(formData)
+          // Append each form field to the FormData object
+          Object.keys(formData).forEach((key) => {
+            const value = formData[key];
+            if (value !== null && value !== undefined) {
+              if (typeof value === "string" || typeof value === "number") {
+                formDataObj_2.append(key, String(value));
+              }
+            }
+          });
+    
+    
+    
+          // If there's a file, append it to the FormData object
+       
+          console.log(formDataObj_2)
+          const response = await fetch(
+            process.env.NEXT_PUBLIC_NEXTAUTH_BACKEND_URL_MODEL_API +
+              "Login/api/add_sessie/",
+            {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${session?.accessToken}`,
+              },
+              body: formDataObj_2, // Send the FormData object
+            }
+          );
+    
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+    
+          const data = await response.text(); // Parse the response as JSON
+          console.log(data)
+          return data;
         } catch (err) {
-            toast.error(`Niet gelukt om gegevens te updaten: ${err}`);
+          toast.error(`Niet gelukt om gegevens te updaten: ${err}`);
         }
-    };
+      };
 
+    const range_vakken=[1,2,3,4,5]
 
-    const vakken = generalContext?.vakken.map((vak : any) => vak.naam)
+    const vakken = generalContext?.vakken.map((vak : any) => vak)
+
+    const leerling_2 = generalContext?.leerlings.map((leerling : any) => leerling)
+
     const textInputOne = [
         {
             title: 'Leerling',
             placeHolder: 'Voor en Achternaam',
-            type: 'text',
+            type: 'customInput',
+            iterable: leerling_2
 
         }, 
         {
             title: 'Inzicht',
             placeHolder: 'Voeg een rating toe',
-            type: 'numberInput',
+            type: 'range',
+            iterable: range_vakken
         }, 
         {
             title: 'Kennis',
             placeHolder: 'Voeg een rating toe',
-            type: 'numberInput',
+            type: 'range',
+            iterable: range_vakken
         }, 
         {
             title: 'Vak',
             placeHolder: 'Selecteer het vak',
             type: 'customInput',
             iterable: vakken
+           
         },       
     ]
 
@@ -83,7 +148,8 @@ export default function LogSession(){
         {
             title: 'Werkhouding',
             placeHolder: 'Voeg een rating toe',
-            type: 'numberInput',
+            type: 'range',
+            iterable: range_vakken
         }, 
         {
             title: 'Extra',
