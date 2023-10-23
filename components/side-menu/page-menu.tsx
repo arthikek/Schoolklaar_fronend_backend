@@ -5,12 +5,13 @@ import { Icons } from "../icons";
 import Typography from "../typography";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
+import { signOut } from "next-auth/react";
 
 
 export default function PageMenu() {
     const router = usePathname();
     const [activeRoute, setActiveRoute] = useState('');
+  
 
     useEffect(() => {
         if (router.includes('log-sessie')) {
@@ -88,18 +89,20 @@ export default function PageMenu() {
                 link="/"
                 icon={<Icons.logOut className = 'text-[#62C8F4]'/>}
                 text="Log Uit"
+                onClick={()=>signOut()}
             />
 
         </div>
     )
 }
 
-function MenuLink({ activeRoute, route, link, icon, text } : any) {
+function MenuLink({ activeRoute, route, link, icon, text, onClick } : any) {
+    
     return (
         <div className={`${activeRoute === route ? 'border-primary border-l-[4px]' : 'ml-1'} h-[40px] flex flex-row items-center `}>
             <div className={` ${activeRoute === route ? 'py-2 bg-tertairy w-[280px] ml-6 pl-10 rounded-xl' : 'ml-16'}`}>
-                <Link href={link}>
-                    <div className="flex items-center ">
+                <Link href={link} onClick={onClick}>
+                    <div className="flex items-center " onClick={onClick}>
                         {icon}
                         <Typography variant='muted' className="hover:font-bold text-quadrairy lg:text-[16px] ml-12 mt-[1px]">{text}</Typography>
                     </div>

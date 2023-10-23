@@ -56,7 +56,7 @@ export const authOptions: NextAuthOptions = {
           }
 
           const data = await response.json();
-
+          console.log(data)
           // Return the data if present
           if (data) return data;
         } catch (error) {
