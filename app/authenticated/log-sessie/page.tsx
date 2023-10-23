@@ -10,6 +10,8 @@ import { updateStudent } from "@/hook/students-info";
 import { poppins } from "@/lib/fonts";
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
+
+
 import 'react-toastify/dist/ReactToastify.css';
 
 type FormSessie = {
@@ -87,7 +89,7 @@ export default function LogSession(){
           console.log(formDataObj_2)
           const response = await fetch(
             process.env.NEXT_PUBLIC_NEXTAUTH_BACKEND_URL_MODEL_API +
-              "Login/api/add_sessie/",
+              "Login/api/add_sessie_2/",
             {
               method: "POST",
               headers: {

@@ -16,6 +16,7 @@
     "@mui/material": "^5.14.14",
     "axios": "^1.5.1",
     "class-variance-authority": "^0.7.0",
+    "cookies-next": "^4.0.0",
     "daisyui": "^3.9.2",
     "framer-motion": "^10.16.4",
     "lodash": "^4.17.21",
