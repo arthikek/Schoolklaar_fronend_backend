@@ -9,7 +9,7 @@ const SessieCard = ( props :Sessie ) => {
     kennis : '',
     werkhouding : '',
     extra : '',
-    datum :'',,
+    datum :'',
    
   });
 
@@ -55,14 +55,12 @@ const SessieCard = ( props :Sessie ) => {
         <p className="font-normal text-gray-500 dark:text-gray-400"> Werkhouding: {props.werkhouding}</p>
         <p className="font-normal text-gray-500 dark:text-gray-400"> Extra: {props.extra}</p>
         <p className="font-normal text-gray-500 dark:text-gray-400"> Vak: {props.vak.naam}</p>
-        <p className="font-normal text-gray-500 dark:text-gray-400"> Datum: {props.datum}</p>
-   
-    
-        <button onClick={() => setShowModal(true)}>Edit</button>
+        <p className="font-normal text-gray-500 dark:text-gray-400"> Datum: {props.datum}</p>      
+        <button className="bg-blue-300 p-3 mt-2 rounded-xl" onClick={() => setShowModal(true)}>Edit</button>
 
 {showModal && (
   <div>
-    {/* This is a simple modal, you can replace with a fancier UI if you prefer */}
+    
     <input name="inzicht" value={formData.inzicht} onChange={handleInputChange} />
     <input name="kennis" value={formData.kennis} onChange={handleInputChange} />
     <input name="werkhouding" value={formData.werkhouding} onChange={handleInputChange} />
