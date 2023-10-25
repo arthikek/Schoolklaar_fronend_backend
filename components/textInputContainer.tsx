@@ -1,3 +1,4 @@
+import { Icons } from "./icons";
 import Typography from "./typography";
 
 
@@ -26,39 +27,47 @@ export default function TextInputContainer({input, handleInputChange} : any) {
                             />) :
                             text.type === 'numberInput' ? 
                             ( 
-                                <div className="border bg-white border-[#ABABAB] rounded-xl p-1">
-                                    <select 
+                                <div className="relative flex flex-col items-center border bg-white border-[#ABABAB] rounded-xl">
+                                    <select
                                     name={title}
-                                    className={`w-full bg-white p-3`}
-                                    style = {{color: '#121212'}}
+                                    className="appearance-none w-full p-4 h-full bg-transparent text-dark"
+                                    style={{ color: '#121212' }}
                                     onChange={handleInputChange}
                                     >
-                                        <option><span className="text-[#8D94A0]">{text.placeHolder}</span></option>
-                                        {[...Array(5)].map((_, index) => (
-                                            <option key={index + 1} value={index + 1}>
-                                                {index + 1}
-                                            </option>
-                                        ))}
+                                    <option disabled><span className="text-dark/60">{text.placeHolder}</span></option>
+                                    {[...Array(5)].map((_, index) => (
+                                        <option key={index + 1} value={index + 1}>
+                                        {index + 1}
+                                        </option>
+                                    ))}
                                     </select>
-                                </div>
+                                    <div className="pointer-events-none absolute inset-0 flex items-center justify-end pr-4">
+                                    {/* Insert your arrow icon component here */}
+                                    <Icons.arrowDown className="text-[#8D94A0]"/>
+                                    </div>
+                              </div>
                             ) :
                             text.type === 'customInput' ? 
                             (
-                                <div className="border bg-white border-[#ABABAB] rounded-xl  p-4">
-                                    <select 
-                                    name={title}
-                                    className={`w-full bg-white `}
-                                    style = {{color: '#121212'}}
-                                    onChange={handleInputChange}
-                                    >
-                                        <option><span className="text-dark/60">{text.placeHolder}</span></option>
-                                        {text.iterable?.map((it : any, index : any) => (
-                                            <option key={index + 1} value={it.id? it.id : it}>
-                                                {it.naam ? it.naam : it}
-                                            </option>
-                                        ))}
-                                    </select>
+                                <div className="relative flex flex-col items-center border bg-white border-[#ABABAB] rounded-xl">
+                                <select
+                                  name={title}
+                                  className="appearance-none w-full p-4 h-full bg-transparent text-dark"
+                                  style={{ color: '#121212' }}
+                                  onChange={handleInputChange}
+                                >
+                                  <option disabled><span className="text-dark/60">{text.placeHolder}</span></option>
+                                  {text.iterable?.map((it : any, index : any) => (
+                                    <option key={index} value={it}>
+                                      {it}
+                                    </option>
+                                  ))}
+                                </select>
+                                <div className="pointer-events-none absolute inset-0 flex items-center justify-end pr-4">
+                                  {/* Insert your arrow icon component here */}
+                                  <Icons.arrowDown className="text-[#8D94A0]"/>
                                 </div>
+                              </div>
                             ) :
                             (
                                 <input 
