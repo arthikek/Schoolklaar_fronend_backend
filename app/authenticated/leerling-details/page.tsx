@@ -3,6 +3,7 @@ import schoolklaar from '../../public/Schoolklaar.png';
 import type {AppProps} from "next/app";
 import { fetchStudentList } from '@/hook/allstudents-list';
 
+export const dynamic = "force-dynamic"
 
 export default async function Home({Component, pageProps}:AppProps) {
 

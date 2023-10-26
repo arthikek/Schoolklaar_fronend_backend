@@ -33,7 +33,8 @@ export default function SessieDetails(){
             <ToastContainer />
             <Typography variant = 'title' className={`text-quintary lg:text-4xl font-medium ${poppins.className}`}>Overzicht Sessies</Typography>
             <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className}`}>Alle sessies geregistreerd op jou locatie</Typography>
-            {Sessies && Sessies.map((sessie: Sessie) => <SessieCard key={sessie.id} {...sessie} />)}
+            <div className="grid grid-cols-2 md:grid-cols-4">{Sessies && Sessies.map((sessie: Sessie) => <SessieCard key={sessie.id} {...sessie} />)}</div>
+            
 
 
 

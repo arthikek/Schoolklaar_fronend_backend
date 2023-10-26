@@ -25,7 +25,7 @@ export const fetchGeneralContext = async (): Promise<any> => {
     }
 
     const apiUrl = process.env.NEXTAUTH_BACKEND_URL_MODEL_API + "Login/api/general_context/";
-    
+    console.log(apiUrl)
     let response: any;
     try {
         response = await fetch(apiUrl, {

@@ -80,4 +80,22 @@ declare global {
         vak: Vak;
     }
     
+    interface Session {
+        accessToken: string;
+        refresh_token: string;
+      }
+    
+    interface Student {
+        id: number;
+        school: School;
+        vak_ratings: VakRating[];
+        naam: string;
+        achternaam: string;
+        email: string;
+        klas: number;
+        niveau: number;
+        gebruiker: number;
+        vakken: number[];
+    }
+    
 }
