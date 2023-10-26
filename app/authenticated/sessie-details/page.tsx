@@ -26,8 +26,8 @@ export default function SessieDetails(){
       //Iterables
   
     const Sessies:Sessie[] = generalContext?.sessies
+   
     console.log(Sessies)
-
     return (
         <div>
             <ToastContainer />

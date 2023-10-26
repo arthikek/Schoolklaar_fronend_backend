@@ -5,12 +5,11 @@ import React, { useState } from 'react';
 const SessieCard = ( props :Sessie ) => {
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
-    inzicht: '',
-    kennis : '',
-    werkhouding : '',
-    extra : '',
-    datum :'',
-   
+    inzicht: props.inzicht ?? '',
+    kennis: props.kennis ?? '',
+    werkhouding: props.werkhouding ?? '',
+    extra: props.extra ?? '',
+    datum: props.datum ?? ''
   });
 
   
@@ -48,15 +47,17 @@ const SessieCard = ( props :Sessie ) => {
     <div className="max-w-sm p-6 m-4 rounded-2xl bg-white border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700">
 
    
-        <h2 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{props.Leerling.naam}</h2>
-        <p className="font-normal text-gray-500 dark:text-gray-400"> Naam begeleider: {props.begeleider.username}</p>
-        <p className="font-normal text-gray-500 dark:text-gray-400"> Inzicht: {props.inzicht}</p>
-        <p className="font-normal text-gray-500 dark:text-gray-400"> Kennis: {props.kennis}</p>
-        <p className="font-normal text-gray-500 dark:text-gray-400"> Werkhouding: {props.werkhouding}</p>
-        <p className="font-normal text-gray-500 dark:text-gray-400"> Extra: {props.extra}</p>
-        <p className="font-normal text-gray-500 dark:text-gray-400"> Vak: {props.vak.naam}</p>
-        <p className="font-normal text-gray-500 dark:text-gray-400"> Datum: {props.datum}</p>      
-        <button className="bg-blue-300 p-3 mt-2 rounded-xl" onClick={() => setShowModal(true)}>Edit</button>
+  
+      <h2 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{props.Leerling?.naam ?? "N/A"}</h2>
+      <p className="font-normal text-gray-500 dark:text-gray-400"> Naam begeleider: {props.begeleider?.username ?? "N/A"}</p>
+      <p className="font-normal text-gray-500 dark:text-gray-400"> Inzicht: {props.inzicht ?? "N/A"}</p>
+      <p className="font-normal text-gray-500 dark:text-gray-400"> Kennis: {props.kennis ?? "N/A"}</p>
+      <p className="font-normal text-gray-500 dark:text-gray-400"> Werkhouding: {props.werkhouding ?? "N/A"}</p>
+      <p className="font-normal text-gray-500 dark:text-gray-400"> Extra: {props.extra ?? "N/A"}</p>
+      <p className="font-normal text-gray-500 dark:text-gray-400"> Vak: {props?.vak?.naam ?? "N/A"}</p>
+      <p className="font-normal text-gray-500 dark:text-gray-400"> Datum: {props?.datum ?? "N/A"}</p>
+      
+      <button className="bg-blue-300 p-3 mt-2 rounded-xl" onClick={() => setShowModal(true)}>Edit</button>
 
 {showModal && (
   <div>
