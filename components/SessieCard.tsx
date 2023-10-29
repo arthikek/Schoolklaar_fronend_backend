@@ -36,7 +36,8 @@ const SessieCard = (props: Sessie) => {
       if (response.ok) {
         // Handle success (maybe notify the user and close the modal)
         setShowModal(false);
-      } else {
+        window.location.reload();  //TODO: THis should be done more smootly isntead of using a full reload
+          } else {
         // Handle the error response from the server
         const data = await response.json();
         console.error(data);
@@ -152,13 +153,13 @@ const SessieCard = (props: Sessie) => {
             className="bg-blue-500 text-white p-3 mt-2 rounded-xl"
             onClick={() => handleUpdate(props.id)}
           >
-            Save Changes
+            Sla wijzingen op
           </button>
           <button
             className="bg-blue-500 text-white p-3 mt-2 rounded-xl"
             onClick={() => setShowModal(false)}
           >
-            Cancel
+            Annuleer
           </button>
         </div>
       )}

@@ -16,22 +16,6 @@ interface VakRating {
     beschrijving: string;
 }
 
-interface Student {
-    id: number;
-    school: {
-        id: number;
-        naam: string;
-        grootte: number;
-    };
-    vak_ratings: VakRating[];
-    naam: string;
-    achternaam: string;
-    email: string;
-    klas: number;
-    niveau: number;
-    gebruiker: number;
-    vakken: number[];
-}
 
 
 interface Session {
