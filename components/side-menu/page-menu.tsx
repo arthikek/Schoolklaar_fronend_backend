@@ -54,7 +54,7 @@ export default function PageMenu() {
             <MenuLink 
                 activeRoute={activeRoute}
                 route="Overzicht leerlingen"
-                link="/authenticated/leerling-details"
+                link="/authenticated/leerling-overzicht"
                 icon={<Icons.contact className = 'text-[#62C8F4]'/>}
                 text="Leerling Details"
             />

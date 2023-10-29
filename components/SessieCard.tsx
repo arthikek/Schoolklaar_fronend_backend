@@ -62,11 +62,21 @@ const SessieCard = ( props :Sessie ) => {
 {showModal && (
   <div>
     
-    <input name="inzicht" value={formData.inzicht} onChange={handleInputChange} />
-    <input name="kennis" value={formData.kennis} onChange={handleInputChange} />
-    <input name="werkhouding" value={formData.werkhouding} onChange={handleInputChange} />
-    <input name="extra" value={formData.extra} onChange={handleInputChange} />
-    <input name="datum" value={formData.datum} onChange={handleInputChange} />
+    <label htmlFor="inzicht">Inzicht:</label>
+    <input name="inzicht" value={formData.inzicht} onChange={handleInputChange} placeholder="Enter inzicht" title="Inzicht" />
+
+    <label htmlFor="kennis">Kennis:</label>
+    <input name="kennis" value={formData.kennis} onChange={handleInputChange} placeholder="Enter kennis" title="Kennis" />
+
+    <label htmlFor="werkhouding">Werkhouding:</label>
+    <input name="werkhouding" value={formData.werkhouding} onChange={handleInputChange} placeholder="Enter werkhouding" title="Werkhouding" />
+
+    <label htmlFor="extra">Extra:</label>
+    <input name="extra" value={formData.extra} onChange={handleInputChange} placeholder="Enter extra" title="Extra" />
+
+    <label htmlFor="datum">Datum:</label>
+    <input name="datum" value={formData.datum} onChange={handleInputChange} placeholder="Enter datum" title="Datum" />
+   
     <button onClick={()=>handleUpdate(props.id)}>Save Changes</button>
     <button onClick={() => setShowModal(false)}>Cancel</button>
   </div>
