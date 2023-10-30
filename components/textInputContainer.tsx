@@ -1,3 +1,4 @@
+import SelectContainer from "./SelectableDiv";
 import { Icons } from "./icons";
 import Typography from "./typography";
 import { useGeneralContext } from "@/context/leerling-provider";
@@ -42,35 +43,7 @@ export default function TextInputContainer({
               />
             ) : text.type === "range" ? (
               // Render a custom dropdown based on the provided iterable (e.g., vakken, leerlingen)
-              <div className="border bg-white border-[#ABABAB] rounded-xl  p-4">
-                <select
-                  name={title}
-                  className={`w-full bg-white `}
-                  style={{ color: "#121212" }}
-                  onChange={handleInputChange}
-                >
-                  <option>
-                    <span className="text-dark/60">{text.placeHolder}</span>
-                  </option>
-                  {(() => {
-                    const options = [];
-                    if (text.iterable) {
-                      for (let i = 0; i < text.iterable.length; i++) {
-
-                        const it = text.iterable[i];
-                
-                        options.push(
-                          <option key={i} value={it}>
-                            {it}
-                          </option>
-                        );
-                      }
-                    }
-                   
-                    return options;
-                  })()}
-                </select>
-              </div>
+              <SelectContainer text={text} handleInputChange={handleInputChange}  />
             ) : text.type === "customInput" ? (
               // Render a custom dropdown based on the provided iterable (e.g., vakken, leerlingen)
               <div className="border bg-white border-[#ABABAB] rounded-xl  p-4">
