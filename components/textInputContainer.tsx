@@ -50,7 +50,7 @@ export default function TextInputContainer({
                 <select
                   name={title}
                   className={`w-full bg-white p-4 rounded-xl`}
-                  style={{ color: "#121212" }}
+                  style={{ color: "#121212", WebkitAppearance: 'none'  }}
                   onChange={handleInputChange}
                 >
                   <option>
