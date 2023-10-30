@@ -1,4 +1,4 @@
-'use client'
+
 import React, { useRef } from "react";
 
 interface SelectProps {
@@ -10,16 +10,10 @@ interface SelectProps {
 const SelectContainer: React.FC<SelectProps> = ({ text, handleInputChange }) => {
   const selectRef = useRef<HTMLSelectElement>(null);
 
-  const handleDivClick = () => {
-    if (selectRef.current) {
-      selectRef.current.click();
-      console.log("clicked");
-     
-    }
-  };
+ 
 
   return (
-    <div onClick={handleDivClick} className="border bg-white border-[#ABABAB] rounded-xl ">
+    <div className="border bg-white border-[#ABABAB] rounded-xl ">
       <select
         ref={selectRef}
         name={text.title}

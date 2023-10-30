@@ -46,10 +46,10 @@ export default function TextInputContainer({
               <SelectContainer text={text} handleInputChange={handleInputChange}  />
             ) : text.type === "customInput" ? (
               // Render a custom dropdown based on the provided iterable (e.g., vakken, leerlingen)
-              <div className="border bg-white border-[#ABABAB] rounded-xl  p-4">
+              <div className="border bg-white border-[#ABABAB] rounded-xl  ">
                 <select
                   name={title}
-                  className={`w-full bg-white `}
+                  className={`w-full bg-white p-4 rounded-xl`}
                   style={{ color: "#121212" }}
                   onChange={handleInputChange}
                 >
