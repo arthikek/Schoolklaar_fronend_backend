@@ -18,7 +18,7 @@ const SelectContainer: React.FC<SelectProps> = ({ text, handleInputChange }) => 
         ref={selectRef}
         name={text.title}
         className={`w-full bg-white border-black p-4 rounded-xl`}
-        style={{ color: "#121212" }}
+        style={{ color: "#121212", WebkitAppearance: 'none' }}
         onChange={handleInputChange}
       >
         <option>
