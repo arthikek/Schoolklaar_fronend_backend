@@ -104,6 +104,7 @@ export default function LogSession(){
     
           const data = await response.text(); // Parse the response as JSON
           console.log(data)
+          toast.success('Bericht Gestuurd!');  //TODO: THis should be done more smootly isntead of using a full reload
           return data;
         } catch (err) {
           toast.error(`Niet gelukt om gegevens te updaten: ${err}`);

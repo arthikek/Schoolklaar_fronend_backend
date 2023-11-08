@@ -34,9 +34,9 @@ export default async function Page ({params: {leerlingdetails}} : PageProps ) {
             </Typography>
             <hr className="max-w-[1200px] h-[2px] mt-3 bg-[#DBDBDB]" />
             <div className='grid grid-cols-2 gap-8 max-w-[1200px] mt-16'>
-                {studentDetails.vak_ratings.map((detail : any) => {
+                {studentDetails.vak_ratings.map((detail : any, index : number) => {
                     return (
-                        <Link href = {`/authenticated/leerling-overzicht/${leerlingdetails}/${detail.vak.naam}`} className='border rounded-xl border-quadrairy px-6 py-4 flex justify-between'>
+                        <Link key={index} href = {`/authenticated/leerling-overzicht/${leerlingdetails}/${detail.vak.naam}`} className='border rounded-xl border-quadrairy px-6 py-4 flex justify-between'>
                             <Typography variant='muted'>{detail.vak.naam}</Typography>
                             <Typography variant='muted' style={{ color: getGradeColor(detail.cijfer) }}>{detail.cijfer}</Typography>
                         </Link>

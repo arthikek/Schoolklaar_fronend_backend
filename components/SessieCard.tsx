@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSession } from "next-auth/react";
 
+
+
 const SessieCard = (props: Sessie) => {
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
@@ -36,9 +38,12 @@ const SessieCard = (props: Sessie) => {
       if (response.ok) {
         // Handle success (maybe notify the user and close the modal)
         setShowModal(false);
-        window.location.reload();  //TODO: THis should be done more smootly isntead of using a full reload
-          } else {
+        window.location.reload();
+    
+      } 
+      else {
         // Handle the error response from the server
+
         const data = await response.json();
         console.error(data);
       }
@@ -47,6 +52,7 @@ const SessieCard = (props: Sessie) => {
       console.error(error);
     }
   };
+  
   return (
     <div className="max-w-sm p-6 m-4 rounded-2xl bg-white border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700">
       <h2 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
