@@ -15,7 +15,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 type FormSessie = {
-    Leerling: number,
+    leerling: number,
     inzicht: number,
     kennis: number,
     vak: string,
@@ -37,7 +37,7 @@ export default function LogSession(){
 
     const [formData, setFormData] = useState<FormSessie>(
         {
-            Leerling: 2,
+            leerling: 2,
             inzicht: 0,
             kennis: 0,
             vak: '',
@@ -52,11 +52,12 @@ export default function LogSession(){
 
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+      const { name, value } = e.target;
+      const newValue = (name === "leerling" || name === "inzicht" || name === "kennis" || name === "werkhouding") ? Number(value) : value;
+      setFormData(prevState => ({
+          ...prevState,
+          [name]: newValue
+      }));
     };
 
 

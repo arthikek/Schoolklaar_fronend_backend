@@ -35,11 +35,6 @@ export default function SessieDetails(){
             <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className}`}>Alle sessies geregistreerd op jou locatie</Typography>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">{Sessies && Sessies.map((sessie: Sessie) => <SessieCard key={sessie.id} {...sessie} />)}</div>
             
-
-
-
-            
-           
         </div>
     )
 }

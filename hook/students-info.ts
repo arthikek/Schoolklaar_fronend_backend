@@ -37,6 +37,7 @@ export const fetchStudent = async (): Promise<Student> => {
         throw new Error("Access token not found");
     }
   
+    console.log('route', process.env.NEXTAUTH_BACKEND_URL_MODEL_API + "Login/api/student_detail/")
     const response = await fetch(
       process.env.NEXTAUTH_BACKEND_URL_MODEL_API + "Login/api/student_detail/",
       {
@@ -48,6 +49,7 @@ export const fetchStudent = async (): Promise<Student> => {
       }
     );
   
+    console.log('response', response )
     if (!response.ok) {
       throw new Error("Network response was not ok");
   }
@@ -55,7 +57,43 @@ export const fetchStudent = async (): Promise<Student> => {
     const data: Student = await response.json();
   
     return data;
-  };
+};
+
+export const getStudent = async (leerlingdetails : any): Promise<Student> => {
+  let session: Session | null = null;
+  try {
+      session = await getServerSession(authOptions);
+  } catch (error) {
+      console.error("Error fetching session:", error);
+      throw new Error("Failed to fetch session");
+  }
+  const token = session?.accessToken;
+
+  if (!token) {
+      throw new Error("Access token not found");
+  }
+
+  console.log('route', process.env.NEXTAUTH_BACKEND_URL_MODEL_API + "Login/api/student_detail/" + leerlingdetails)
+  const response = await fetch(
+    process.env.NEXTAUTH_BACKEND_URL_MODEL_API + "Login/api/student_detail/"  + leerlingdetails,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  console.log('response', response )
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+}
+
+  const data: Student = await response.json();
+
+  return data;
+};
 
 export const updateStudent = async (updatedStudentData: Student): Promise<Student> => {
     let session: Session | null = null;

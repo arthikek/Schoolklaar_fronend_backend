@@ -17,7 +17,7 @@ export const fetchIndividualLeerlingDetails = async (slug: Number, token: Extend
     if (!session || !session.accessToken) {
         throw new Error("No access token available");
     }
-    console.log("test")
+    console.log("route", `${process.env.NEXT_PUBLIC_NEXTAUTH_BACKEND_URL_MODEL_API}Login/api/student_detail/${slug}`)
     const apiUrl = `${process.env.NEXT_PUBLIC_NEXTAUTH_BACKEND_URL_MODEL_API}Login/api/student_detail/${slug}`;
 
     console.log(apiUrl)

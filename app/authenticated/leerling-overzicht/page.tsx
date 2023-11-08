@@ -13,15 +13,10 @@ export default async function Home({ Component, pageProps }: AppProps) {
   const students = await fetchStudentList();
 
   console.log('student', students);
-  console.log('student', students[0].vak_ratings);
-
-  console.log('student', students[0].vak_ratings[0].vak.naam);
-  console.log('student', students[0].vak_ratings[0].cijfer);
-
 
   return (
       <section className="min-h-screen w-full">
-        <Typography variant = 'title' className={`text-quintary lg:text-4xl font-medium ${poppins.className}`}>Maak een Sessie</Typography>
+        <Typography variant = 'title' className={`text-quintary lg:text-4xl font-medium ${poppins.className}`}>Leerling Overzicht</Typography>
         <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>Op deze pagina kan je vertellen hoe een leerling zich gedraagt in de les
         Wat zijn de sterke punten en wat zijn de verbeterpunten? Hoe is de werkhouding, het inzicht en de kennis van de leerling?
         </Typography>

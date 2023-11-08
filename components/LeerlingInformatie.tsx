@@ -1,10 +1,11 @@
-"use client";
 import { useIndividualLeerlingDetails } from "@/hook/get_student_details/student_detail_hook";
 import React from "react";
 import { useSession } from "next-auth/react";
 import { fetchIndividualLeerlingDetails } from "@/hook/get_student_details/get_student_detail";
 import { useEffect } from "react";
 import { useState } from "react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 
 interface Props {
   slug: Number;
@@ -17,33 +18,26 @@ type Details = {
   ratings: VakRating[];
 };
 
-const LeerlingInformatie: React.FC<Props> = ({ slug }) => {
-  const { data: session } = useSession() as { data: ExtendedSession };
-  const [data, setData] = useState<Details | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<Error | null>(null);
+export default async function({ slug } : any){
+  let session: Session | null = null;
+  {/* @ts-ignore */}
+  let data: Details = null;
+  try {
+    session = await getServerSession(authOptions);
+    console.log('session2', session)
+    {/* @ts-ignore */}
+    data = await fetchIndividualLeerlingDetails(slug, session);
+  } catch (error) {
+      console.error("Error fetching session:", error);
+      throw new Error("Failed to fetch session");
+  }
+
 
   
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await fetchIndividualLeerlingDetails(slug, session);
-        console.log(result) 
-        setData(result);
-      } catch (err) {
-        console.log(err)
-        
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [slug]);
 
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+
+
 
 
   return (
@@ -101,4 +95,3 @@ const LeerlingInformatie: React.FC<Props> = ({ slug }) => {
   );
 };
 
-export default LeerlingInformatie;
