@@ -71,6 +71,7 @@ export default function LogSession(){
     
         try {
           const formDataObj_2 = new FormData();
+         
           // Append each form field to the FormData object
           Object.keys(formData).forEach((key) => {
             const value = formData[key];

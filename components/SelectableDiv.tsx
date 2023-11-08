@@ -16,7 +16,7 @@ const SelectContainer: React.FC<SelectProps> = ({ text, handleInputChange }) => 
     <div className="border bg-white border-[#ABABAB] rounded-xl ">
       <select
         ref={selectRef}
-        name={text.title}
+        name={text.title.toLowerCase()}
         className={`w-full bg-white border-black p-4 rounded-xl`}
         style={{ color: "#121212", WebkitAppearance: 'none' }}
         onChange={handleInputChange}
