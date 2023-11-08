@@ -108,6 +108,7 @@ declare global {
         niveau: number;
         gebruiker: number;
         vakken: number[];
+        sessies: Sessie[];
     }
 
     type ExtendedSession = {

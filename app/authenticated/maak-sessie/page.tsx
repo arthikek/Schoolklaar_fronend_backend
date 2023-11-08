@@ -71,7 +71,6 @@ export default function LogSession(){
     
         try {
           const formDataObj_2 = new FormData();
-         
           // Append each form field to the FormData object
           Object.keys(formData).forEach((key) => {
             const value = formData[key];
@@ -86,7 +85,7 @@ export default function LogSession(){
     
           // If there's a file, append it to the FormData object
        
-          console.log('form data submit', formDataObj_2)
+          console.log(formDataObj_2)
           const response = await fetch(
             process.env.NEXT_PUBLIC_NEXTAUTH_BACKEND_URL_MODEL_API +
               "Login/api/add_sessie_2/",
