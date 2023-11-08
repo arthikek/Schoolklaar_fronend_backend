@@ -15,7 +15,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 type FormSessie = {
-    leerling: number,
+    Leerling: number,
     inzicht: number,
     kennis: number,
     vak: string,
@@ -37,7 +37,7 @@ export default function LogSession(){
 
     const [formData, setFormData] = useState<FormSessie>(
         {
-            leerling: 2,
+            Leerling: 2,
             inzicht: 0,
             kennis: 0,
             vak: '',
@@ -52,12 +52,11 @@ export default function LogSession(){
 
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const { name, value } = e.target;
-      const newValue = (name === "leerling" || name === "inzicht" || name === "kennis" || name === "werkhouding") ? Number(value) : value;
-      setFormData(prevState => ({
-          ...prevState,
-          [name]: newValue
-      }));
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
     };
 
 
@@ -72,7 +71,6 @@ export default function LogSession(){
     
         try {
           const formDataObj_2 = new FormData();
-          console.log(formData)
           // Append each form field to the FormData object
           Object.keys(formData).forEach((key) => {
             const value = formData[key];
@@ -87,7 +85,7 @@ export default function LogSession(){
     
           // If there's a file, append it to the FormData object
        
-          console.log(formDataObj_2)
+          console.log('form data submit', formDataObj_2)
           const response = await fetch(
             process.env.NEXT_PUBLIC_NEXTAUTH_BACKEND_URL_MODEL_API +
               "Login/api/add_sessie_2/",
