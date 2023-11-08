@@ -18,9 +18,10 @@ const Page: FC<PageProps> = ({params: {leerlingdetails}} ) => {
     }
     
     return (
-        <section>
+        <div>
+            
             <LeerlingInformatie slug={Number(leerlingdetails)} />
-        </section>
+        </div>
     );
 }
 

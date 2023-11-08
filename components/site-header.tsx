@@ -98,7 +98,7 @@ export default function Navbar() {
                 <Images.school_logo />
                 <Typography variant = 'muted' className='ml-4 mt-2 '>Admin Portaal</Typography>
               </div>
-              <SearchBar />
+              {/* <SearchBar /> */}
 
           </div>   
         {isMenuOpen && <NavContentMob setIsMenuOpen={setIsMenuOpen} currentPath={path || ''} />}

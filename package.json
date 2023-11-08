@@ -31,6 +31,7 @@
     "type": "^2.7.2"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.201",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

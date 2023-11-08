@@ -1,16 +1,15 @@
-'use client'
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { useSession } from "next-auth/react";
 
 
 
 export const fetchIndividualLeerlingDetails = async (slug: Number, token: ExtendedSession): Promise<{ detail: StudentParsed, sessions: Sessie[], ratings: VakRating[] }> => {
-
+    console.log('slug', slug)
 
     const session = token
    
     try {
-        console.log(session)
+        console.log('session', session)
     } catch (error) {
         throw new Error("Failed to fetch session");
     }

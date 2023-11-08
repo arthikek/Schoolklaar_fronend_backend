@@ -13,11 +13,16 @@ export const useIndividualLeerlingDetails = (slug: Number , session: ExtendedSes
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
+  console.log('session 2', session)
+
+
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await fetchIndividualLeerlingDetails(slug, session);
-        console.log(result)
+        console.log(result) 
         setData(result);
       } catch (err) {
         console.log(err)
@@ -29,6 +34,8 @@ export const useIndividualLeerlingDetails = (slug: Number , session: ExtendedSes
 
     fetchData();
   }, [slug]);
+  
+  if (!session) return [null, loading, error];
 
   return [data, loading, error];
 };

@@ -34,7 +34,7 @@ type ExtendedSession = {
 
 export default function Layout({ children, params }: { children: React.ReactNode, params: any }) {
     const { setGeneralContext } = useGeneralContext();
-    const { data: session } = useSession() as { data: ExtendedSession }; // Fetch the current session data using Next Auth's hook
+    // const { data: session } = useSession() as { data: ExtendedSession }; // Fetch the current session data using Next Auth's hook
     const {reloaded} = useReloaded();
 
     useEffect(() => {

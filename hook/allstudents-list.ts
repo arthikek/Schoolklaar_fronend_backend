@@ -4,6 +4,7 @@
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { getServerSession } from "next-auth";
+import { signOut } from "next-auth/react";
 
 
 
@@ -58,6 +59,7 @@ interface Session {
     );
   
     if (!response.ok) {
+      signOut({ callbackUrl: '/' });
       throw new Error("Network response was not ok");
   }
   

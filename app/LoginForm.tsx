@@ -17,7 +17,7 @@ const LoginForm = () => {
 
   const handleGoogleSignIn = () => {
     console.log("google sign in");
-    signIn("google", { callbackUrl: `${window.location.origin}/authenticated/log-sessie` });
+    signIn("google", { callbackUrl: `${window.location.origin}/authenticated/maak-sessie` });
   };
 
   const handleSubmit = async (e : React.FormEvent<HTMLFormElement> ) => {
@@ -28,7 +28,7 @@ const LoginForm = () => {
         redirect: true,
         username: username,
         password: password,
-        callbackUrl: `${window.location.origin}/authenticated/log-sessie`,
+        callbackUrl: `${window.location.origin}/authenticated/maak-sessie`,
       });
     
      

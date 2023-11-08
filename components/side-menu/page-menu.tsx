@@ -14,12 +14,12 @@ export default function PageMenu() {
   
 
     useEffect(() => {
-        if (router.includes('log-sessie')) {
-            setActiveRoute('log-sessie');
+        if (router.includes('maak-sessie')) {
+            setActiveRoute('maak-sessie');
         } else if (router.includes('voeg-leerling-toe')) {
             setActiveRoute('voeg-leerling-toe');
-        } else if (router.includes('leerling-details')) {
-            setActiveRoute('leerling-details');
+        } else if (router.includes('leerling-overzicht')) {
+            setActiveRoute('leerling-overzicht');
         } else if (router.includes('sessie-details')) {
             setActiveRoute('sessie-details');
         } else if (router.includes('overzicht-materiaal')) {
@@ -37,10 +37,10 @@ export default function PageMenu() {
 
             <MenuLink 
                 activeRoute={activeRoute}
-                route="log-sessie"
-                link="/authenticated/log-sessie"
+                route="maak-sessie"
+                link="/authenticated/maak-sessie"
                 icon={<Icons.scrollText className = 'text-[#62C8F4]'/>}
-                text="Log Sessie"
+                text="Maak Sessie"
             />
 
             {/* <MenuLink 
@@ -53,19 +53,19 @@ export default function PageMenu() {
 
             <MenuLink 
                 activeRoute={activeRoute}
-                route="Overzicht leerlingen"
+                route="leerling-overzicht"
                 link="/authenticated/leerling-overzicht"
                 icon={<Icons.contact className = 'text-[#62C8F4]'/>}
-                text="Leerling Details"
+                text="Leerling Overzicht"
             />
 
-            <MenuLink 
+            {/* <MenuLink 
                 activeRoute={activeRoute}
                 route="sessie-details"
                 link="/authenticated/sessie-details"
                 icon={<Icons.shell className = 'text-[#62C8F4]'/>}
                 text="Sessie Details"
-            />
+            /> */}
 
             <MenuLink 
                 activeRoute={activeRoute}

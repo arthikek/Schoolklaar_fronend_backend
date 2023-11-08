@@ -163,8 +163,10 @@ export default function LogSession(){
     return (
         <div>
             <ToastContainer />
-            <Typography variant = 'title' className={`text-quintary lg:text-4xl font-medium ${poppins.className}`}>Maak een logboek</Typography>
-            <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className}`}>Vink de vakken aan die jij volgt</Typography>
+            <Typography variant = 'title' className={`text-quintary lg:text-4xl font-medium ${poppins.className}`}>Maak een Sessie</Typography>
+            <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>Op deze pagina kan je vertellen hoe een leerling zich gedraagt in de les
+            Wat zijn de sterke punten en wat zijn de verbeterpunten? Hoe is de werkhouding, het inzicht en de kennis van de leerling?
+            </Typography>
             <hr className="max-w-[1200px] h-[2px] mt-3 bg-[#DBDBDB]" />
             
             <div className="mt-16 max-w-[1200px]">

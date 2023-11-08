@@ -1,6 +1,6 @@
 
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { debounce } from 'lodash'
 import axios from 'axios';
 import Link from 'next/link';
@@ -11,19 +11,29 @@ import {
 import { cn } from '@/lib/utils';
 import { inter } from '@/lib/fonts';
 
-interface SearchResult {
-    node: {
-        title: string;
-        handle: string;
-    }
-    // other fields you expect, like slug
-  }
-
-export default function SearchBar({ className }: any) {
+export default function SearchBar({ className, students }: any) {
   const [query, setQuery] = useState('')
   const searchBarRef = useRef<HTMLDivElement | null>(null);
-  const [results, setResults] = useState<SearchResult[]>([]);
+  const [results, setResults] = useState<Leerling[]>(students);
   const [isLoading, setIsLoading] = useState(false)
+
+  const filterStudents = debounce((query) => {
+    if (!query) {
+      setResults([]);
+      return;
+    }
+    const lowercasedQuery = query.toLowerCase();
+    const filteredStudents = students.filter((student : Leerling) =>
+      student.naam.toLowerCase().includes(lowercasedQuery) || 
+      student.achternaam.toLowerCase().includes(lowercasedQuery)
+    );
+    setResults(filteredStudents);
+  }, 300);
+
+  useEffect(() => {
+    filterStudents(query);
+  }, [query]);
+
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -42,44 +52,48 @@ export default function SearchBar({ className }: any) {
     };
   }, []);
 
+  console.log('results', results);
 
   return (
-    <div className='mt-0 hidden lg:inline-flex' ref={searchBarRef}>
-            <div
-                className={cn(
-                    'border-[1px] p-4 py-3 border-primary rounded-xl min-w-[150px] lg:min-w-[400px] max-w-[600px] flex-row flex items-center justify-between',
-                    className
-                )}
-                >
-                <FontAwesomeIcon
-                    icon={faSearch}
-                    className='text-primary mr-3 h-4 w-4'
-                />
-                <input 
-                    type="text" 
-                    className='w-full text-dark bg-white ml-3'
-                    placeholder="Zoek Op School ..." 
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)} // Added onChange handler here
-                />
-
-        </div>
-        
-        {results[0]?.node && <ul className=' absolute lg:mt-[18px] bg-white shadow p-6 py-4 min-w-[200px] max-w-[550px] z-[100]'>
-            {results.slice(0, 5).map((result, index) => (
-                <>
-                <li key={index} className={`py-4 text-[#121212] hover:text-dark/50 ${inter.className}`}>
-                    <Link href={`/shop/filterable-collection/${result.node.handle}`}>
-                        {result.node.title}
-                    </Link>
-                </li>
-                
-                </>
-            ))}
+    <div className='relative mt-0 hidden lg:inline-flex' ref={searchBarRef}>
+      <div
+        className={cn(
+          'border-[1px] p-4 py-3 border-quadrairy rounded-xl min-w-[150px] lg:min-w-[400px] max-w-[600px] flex-row flex items-center justify-between',
+          className
+        )}
+      >
+        <FontAwesomeIcon
+          icon={faSearch}
+          className='text-primary mr-3 h-4 w-4'
+        />
+        <input 
+          type="text" 
+          className='w-full text-dark bg-white ml-3'
+          placeholder="Zoek op leerling..." 
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </div>
+      
+      {results.length > 0 && (
+        <ul className='absolute lg:mt-[90px] bg-white shadow p-6 py-4 min-w-[400px] max-w-[600px] z-[100]'>
+          {results.slice(0, 5).map((result, index) => (
+            <React.Fragment key={result.id}> {/* Updated key to use student ID */}
+              <li className={`py-4 text-[#121212] hover:text-dark/50 ${inter.className}`}>
+                <Link href={`/authenticated/leerling-overzicht/${result.id}`} className='flex justify-between'>
+                  <div>
+                    {result.naam} {result.achternaam} 
+                  </div>
+                  <div>
+                    Klas: {result.klas}
+                  </div>
+                </Link>
+              </li>
+              {index < results.length - 1 && <hr />} {/* Conditionally render <hr> */}
+            </React.Fragment>
+          ))}
         </ul>
-        }
+      )}
     </div>
   )
 }
-
-
