@@ -52,7 +52,7 @@ export default async function Page ({params: {leerlingdetails, vak}} : PageProps
             
             <hr className="max-w-[1200px] h-[2px] mt-3 bg-[#DBDBDB]" />
 
-            <div className='grid grid-cols-2 gap-16 max-w-[1200px] mt-16'>
+            <div className='grid grid-cols-1 gap-16 max-w-[1200px] mt-16'>
                 <SessieBegeleider 
                     sessie_vak = {sessie_vak}
                     toast = {toast}
