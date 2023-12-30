@@ -68,12 +68,14 @@ function StudentCard({ naam, achternaam, klas, vak_ratings, id }: Student) {
       <div className="grid grid-cols-3 lg:grid-cols-5 mt-4 lg:mt-0 gap-y-0 items-center justify-center text-center">
         {vak_ratings.map((vak_rating, index) => (
           // Apply left border starting from the second item
-          <Link href = {`/authenticated/leerling-overzicht/${id}/${vak_rating.vak.naam}`} key={id} 
-          className={`flex-1 ${index % 5 > 0 ? 'border-l border-primary' : ''} ${index < vak_ratings.length - 5 ? 'border-b border-primary' : ''}`}>
+          index < vak_ratings.length - 5 ? <Link href = {`/authenticated/leerling-overzicht/${id}/${vak_rating.vak.naam}`} key={id} 
+          className={`flex-1 ${index % 5 > 0 ? 'border-l border-primary' : ''} `}>
             <Typography variant='muted' className="text-muted lg:text-[14px] text-sm px-4 mt-2 truncate text-center">
               {vak_rating.vak.naam.slice(0,2)}: {vak_rating.cijfer}
             </Typography>
           </Link>
+          : <hr className=""/>
+
         ))}
       </div>
     </div>
