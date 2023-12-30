@@ -41,10 +41,9 @@ export default async function Page ({params: {leerlingdetails}} : PageProps ) {
                 </Typography>
                 <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>klas: <span className='ml-2'>{studentDetails.klas}</span></Typography>
                 <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>School: <span className='ml-2'>{studentDetails.school.naam}</span></Typography>
-                <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>Info Vakken: Goed in ...., Moeite met ....</Typography>
             </div>
             <hr className="max-w-[1200px] h-[2px] mt-3 bg-[#DBDBDB]" />
-            <div className='grid grid-cols-2 gap-8 max-w-[1200px] mt-16'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-[1200px] mt-16'>
                 {studentDetails.vak_ratings.map((detail : any, index : number) => {
                     return (
                         <Link key={index} href = {`/authenticated/leerling-overzicht/${leerlingdetails}/${detail.vak.naam}`} className='border rounded-xl border-quadrairy px-6 py-4 flex justify-between'>
