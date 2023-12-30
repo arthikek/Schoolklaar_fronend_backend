@@ -71,7 +71,7 @@ function StudentCard({ naam, achternaam, klas, vak_ratings, id }: Student) {
           <Link href = {`/authenticated/leerling-overzicht/${id}/${vak_rating.vak.naam}`} key={id} 
           className={`flex-1 ${index % 5 > 0 ? 'border-l border-primary' : ''} ${index < vak_ratings.length - 5 ? 'border-b border-primary' : ''}`}>
             <Typography variant='muted' className="text-muted lg:text-[14px] text-sm px-4 mt-2 truncate text-center">
-              {vak_rating.vak.naam}: {vak_rating.cijfer}
+              {vak_rating.vak.naam.slice(0,2)}: {vak_rating.cijfer}
             </Typography>
           </Link>
         ))}
