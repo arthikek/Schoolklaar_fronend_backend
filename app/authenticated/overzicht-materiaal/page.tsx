@@ -105,9 +105,9 @@ function CourseComponent({item, classPerSubject} : any) {
 
   
   return (
-    <div className='flex flex-row justify-between items-center max-w-[1200px] border-b-[1px] border-[#CBCBCB]'>
+    <div className='flex flex-col lg:flex-row justify-between items-center max-w-[1200px] border-b-[1px] border-[#CBCBCB]'>
 
-      <div className='grid grid-cols-1 lg:grid-cols-2 justify-center items-center py-8'>
+      <div className='grid grid-cols-2 justify-center items-center py-8'>
         <Image 
         src = '/Schoolklaar.png'
         alt = ''
