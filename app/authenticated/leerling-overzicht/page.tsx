@@ -61,15 +61,16 @@ interface Student {
 function StudentCard({ naam, achternaam, klas, vak_ratings, id }: Student) {
   return (
     <div className="flex flex-col lg:flex-row border border-quadrairy rounded-xl justify-between items-center my-4 py-8 px-8 max-w-[1200px]">
-      <div className="flex flex-col">
+      <div className="flex flex-col lg:w-[30%]">
         <Typography variant='muted' className="text-dark lg:text-lg text-lg">Leerling: {naam} {achternaam}</Typography>
         <Typography variant='muted' className="text-muted lg:text-[16px] text-sm mt-2">Klas: {klas}</Typography>
       </div>
-      <div className="grid grid-cols-5 gap-y-0 items-center justify-center text-center">
+      <div className="grid grid-cols-3 lg:grid-cols-5 gap-y-0 items-center justify-center text-center">
         {vak_ratings.map((vak_rating, index) => (
           // Apply left border starting from the second item
-          <Link href = {`/authenticated/leerling-overzicht/${id}/${vak_rating.vak.naam}`} key={id} className={`flex-1 ${index % 5 > 0 ? 'border-l border-primary' : ''} ${index < vak_ratings.length - 5 ? 'border-b border-primary' : ''}`}>
-            <Typography variant='muted' className="text-muted lg:text-[14px] text-sm px-4 text-md mt-2 truncate text-center">
+          <Link href = {`/authenticated/leerling-overzicht/${id}/${vak_rating.vak.naam}`} key={id} 
+          className={`flex-1 ${index % 5 > 0 ? 'border-l border-primary' : ''} ${index < vak_ratings.length - 5 ? 'border-b border-primary' : ''}`}>
+            <Typography variant='muted' className="text-muted lg:text-[14px] text-sm px-4 mt-2 truncate text-center">
               {vak_rating.vak.naam}: {vak_rating.cijfer}
             </Typography>
           </Link>
