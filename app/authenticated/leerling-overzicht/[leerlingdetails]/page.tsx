@@ -39,8 +39,8 @@ export default async function Page ({params: {leerlingdetails}} : PageProps ) {
                 <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>
                     Email: <span className='ml-2 text-black/80'>{studentDetails.email}</span>
                 </Typography>
-                <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>klas: <span className='ml-2'>{studentDetails.klas}</span></Typography>
-                <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>School: <span className='ml-2'>{studentDetails.school.naam}</span></Typography>
+                <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>klas: <span className='ml-2 text-black/80'>{studentDetails.klas}</span></Typography>
+                <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>School: <span className='ml-2 text-black/80'>{studentDetails.school.naam}</span></Typography>
             </div>
             <hr className="max-w-[1200px] h-[2px] mt-3 bg-[#DBDBDB]" />
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-[1200px] mt-16'>
