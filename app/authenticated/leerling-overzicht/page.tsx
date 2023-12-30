@@ -65,7 +65,7 @@ function StudentCard({ naam, achternaam, klas, vak_ratings, id }: Student) {
         <Typography variant='muted' className="text-dark lg:text-lg text-lg">Leerling: {naam} {achternaam}</Typography>
         <Typography variant='muted' className="text-muted lg:text-[16px] text-sm mt-2">Klas: {klas}</Typography>
       </div>
-      <div className="grid grid-cols-3 lg:grid-cols-5 gap-y-0 items-center justify-center text-center">
+      <div className="grid grid-cols-3 lg:grid-cols-5 mt-4 lg:mt-0 gap-y-0 items-center justify-center text-center">
         {vak_ratings.map((vak_rating, index) => (
           // Apply left border starting from the second item
           <Link href = {`/authenticated/leerling-overzicht/${id}/${vak_rating.vak.naam}`} key={id} 
