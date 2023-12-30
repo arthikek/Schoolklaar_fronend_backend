@@ -27,10 +27,10 @@ export default async function Home({ Component, pageProps }: AppProps) {
           <SearchBar 
           students={students}
           ></SearchBar>
-          <div className="flex flex-row gap-8 mt-4 mr-4">
+          {/* <div className="flex flex-row gap-8 mt-4 mr-4">
             <Typography variant="muted" className="flex flex-row">Filter <Icons.arrowDown className="mt-2 ml-2"/></Typography>
             <Typography variant="muted" className="flex flex-row">Sorteer Op <Icons.arrowDown className="mt-2 ml-2"/></Typography>
-          </div>
+          </div> */}
         </div>
         <div className="mt-6 max-w-[1200px] flex flex-col">
           {students.map(student => (
