@@ -62,7 +62,7 @@ function StudentCard({ naam, achternaam, klas, vak_ratings, id }: Student) {
   return (
     <div className="flex flex-col lg:flex-row border border-quadrairy rounded-xl justify-between my-4 py-8 px-8 max-w-[1200px]">
       <div className="flex flex-col lg:w-[40%]">
-        <Typography variant='muted' className="text-dark lg:text-lg text-lg">Leerling: {naam} {achternaam}</Typography>
+        <Typography variant='muted' className="text-dark lg:text-lg text-lg">{naam} {achternaam}</Typography>
         <Typography variant='muted' className="text-muted lg:text-[16px] text-sm mt-2">Klas: {klas}</Typography>
       </div>
       <div className="grid grid-cols-3 lg:grid-cols-5 mt-4 lg:mt-0 gap-y-0 items-center justify-center text-center">
