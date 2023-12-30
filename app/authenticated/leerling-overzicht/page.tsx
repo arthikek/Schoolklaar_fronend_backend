@@ -73,7 +73,7 @@ function StudentCard({ naam, achternaam, klas, vak_ratings, id }: Student) {
             <div  key={id}  style = {{backgroundColor: color}} className="rounded-lg">
               <Link href = {`/authenticated/leerling-overzicht/${id}/${vak_rating.vak.naam}`} 
                 className={`flex-1 `}>
-                <Typography variant='muted' className="text-white text-[12px] px-4 text-center">
+                <Typography variant='muted' className="text-white text-[12px] lg:text-[12px] px-4 text-center">
                   {vak_rating.vak.naam.slice(0,2)}: {vak_rating.cijfer}
                 </Typography>
               </Link>
