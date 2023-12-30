@@ -20,7 +20,9 @@ export default function SessieLeerling({vak_rating} : any) {
             {vak_rating?.histories.length > 0 ? (vak_rating?.histories?.map((item : any, index: number) => (
                 <div key={index} className='border-2 border-quadrairy rounded-xl px-4 py-6'>
                     <div className='flex justify-between  '>
-                        <Typography variant = 'muted' className='text-muted'  ><span className='text-dark font-bold'>Gemiddelde Cijfer:</span> <span style={{ color: getGradeColor(item.leerling_vak_rating) }}>{item.leerling_vak_rating}</span></Typography>
+                        <Typography variant = 'muted' className='text-muted'  >
+                            <span className='text-dark font-bold'>Gemiddelde Cijfer:</span> 
+                            <span style={{ color: getGradeColor(item.leerling_vak_rating) }}>{item.leerling_vak_rating}</span></Typography>
                         <Typography variant = 'muted' className='text-muted/70'>{item.date_recorded}</Typography>
                     </div>
                     <Typography variant = 'muted' className='font-bold text-dark'>Extra:</Typography>

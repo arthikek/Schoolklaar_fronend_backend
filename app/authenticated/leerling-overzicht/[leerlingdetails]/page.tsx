@@ -34,7 +34,7 @@ export default async function Page ({params: {leerlingdetails}} : PageProps ) {
             </Typography>
             <hr className="max-w-[1200px] h-[2px] mt-3 bg-[#DBDBDB]" />
             <Typography variant = 'title' className={`text-quintary lg:text-2xl font-medium ${poppins.className} mt-8`}>Leerling Informatie</Typography>
-            <div className='grid grid-cols-1 lg:grid-cols-3 mb-2'>
+            <div className='grid grid-cols-1 mb-2'>
 
                 <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>
                     Email: <span className='ml-2 text-black/80'>{studentDetails.email}</span>
