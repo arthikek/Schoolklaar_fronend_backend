@@ -32,7 +32,7 @@ export default async function Home({ Component, pageProps }: AppProps) {
             <Typography variant="muted" className="flex flex-row">Sorteer Op <Icons.arrowDown className="mt-2 ml-2"/></Typography>
           </div>
         </div>
-        <div className="mt-6 max-w-[1200px]">
+        <div className="mt-6 max-w-[1200px] flex flex-col">
           {students.map(student => (
             <Link href={`/authenticated/leerling-overzicht/${student.id}`} key={student.id}>
               <StudentCard 
