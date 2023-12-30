@@ -6,14 +6,15 @@ import Link from "next/link";
 import Typography from "@/components/typography";
 import { poppins } from "@/lib/fonts";
 import SearchBar from "@/components/searchbar";
+import { Icons } from "@/components/icons";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home({ Component, pageProps }: AppProps) {
   const students = await fetchStudentList();
 
-  console.log('student', students);
-
+  //TODO: ADD FILTER FUNCTION
+  // NEED TO SPLIT UP COMPONENT INTO SMALLER COMPONENTS AND MODIFY students
   return (
       <section className="min-h-screen w-full">
         <Typography variant = 'title' className={`text-quintary lg:text-4xl font-medium ${poppins.className}`}>Leerling Overzicht</Typography>
@@ -22,9 +23,15 @@ export default async function Home({ Component, pageProps }: AppProps) {
         </Typography>
         <hr className="max-w-[1200px] h-[2px] mt-3 bg-[#DBDBDB]" />
         
-        <SearchBar className = 'mt-10'
-        students={students}
-        ></SearchBar>
+        <div className="flex flex-row justify-between mt-10 max-w-[1200px]">
+          <SearchBar 
+          students={students}
+          ></SearchBar>
+          <div className="flex flex-row gap-8 mt-4 mr-4">
+            <Typography variant="muted" className="flex flex-row">Filter <Icons.arrowDown className="mt-2 ml-2"/></Typography>
+            <Typography variant="muted" className="flex flex-row">Sorteer Op <Icons.arrowDown className="mt-2 ml-2"/></Typography>
+          </div>
+        </div>
         <div className="mt-6 max-w-[1200px]">
           {students.map(student => (
             <Link href={`/authenticated/leerling-overzicht/${student.id}`} key={student.id}>
@@ -35,7 +42,6 @@ export default async function Home({ Component, pageProps }: AppProps) {
                 klas={student.klas}
                 vak_ratings={student.vak_ratings}
               />
-
             </Link>
           ))}
         </div>

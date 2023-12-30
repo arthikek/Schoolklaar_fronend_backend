@@ -33,6 +33,17 @@ export default async function Page ({params: {leerlingdetails}} : PageProps ) {
             Wat zijn de sterke punten en wat zijn de verbeterpunten? Hoe is de werkhouding, het inzicht en de kennis van de leerling?
             </Typography>
             <hr className="max-w-[1200px] h-[2px] mt-3 bg-[#DBDBDB]" />
+            <Typography variant = 'title' className={`text-quintary lg:text-2xl font-medium ${poppins.className} mt-8`}>Leerling Informatie</Typography>
+            <div className='grid grid-cols-3 mb-2'>
+
+                <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>
+                    Email: <span className='ml-2'>{studentDetails.email}</span>
+                </Typography>
+                <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>klas: <span className='ml-2'>{studentDetails.klas}</span></Typography>
+                <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>School: <span className='ml-2'>{studentDetails.school.naam}</span></Typography>
+                <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>Info Vakken: Goed in ...., Moeite met ....</Typography>
+            </div>
+            <hr className="max-w-[1200px] h-[2px] mt-3 bg-[#DBDBDB]" />
             <div className='grid grid-cols-2 gap-8 max-w-[1200px] mt-16'>
                 {studentDetails.vak_ratings.map((detail : any, index : number) => {
                     return (

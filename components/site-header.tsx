@@ -32,54 +32,21 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScrollTop > lastScrollTop) {
-        // Scrolling down
-        setHeaderVisible(false);
-      } else {
-        // Scrolling up
-        setHeaderVisible(true);
-      }
-
-      setLastScrollTop(currentScrollTop);
-    };
 
     const handleOutsideClick = (event : any) => {
       if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
         setIsMenuOpen(false);
         }
     };
-
-
      // Add the outside click handler
      document.addEventListener("mousedown", handleOutsideClick);
-
-
-    window.addEventListener('scroll', handleScroll);
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
-      window.removeEventListener('scroll', handleScroll);
     };
   }, [lastScrollTop]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setHasScrolled(window.pageYOffset > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
-    <motion.section
-      initial="hidden"
-      animate={headerVisible ? "visible" : "hidden"}
-      variants={headerVariants}
-      transition={{ duration: 0.5 }}
+    <section
       className={cn('relative lg:ml-[350px] border-b-[1px] border-gray-200 ', {
       })}
     >
@@ -104,7 +71,7 @@ export default function Navbar() {
         {isMenuOpen && <NavContentMob setIsMenuOpen={setIsMenuOpen} currentPath={path || ''} />}
       </nav>
 
-    </motion.section>
+    </section>
   );
 }
 
@@ -134,10 +101,10 @@ const NavContent = ({currentPath} : {currentPath: string}) => {
 const NavContentMob = ({ setIsMenuOpen, currentPath }: { setIsMenuOpen: Function, currentPath: string }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
-      className="z-[10] absolute h-screen top-0 flex flex-col lg:hidden"
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 50 }}
+      className="z-[10] fixed min-h-screen top-0 flex flex-col lg:hidden"
     >
      <SideMenu />
     </motion.div>
