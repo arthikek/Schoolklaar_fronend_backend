@@ -60,7 +60,7 @@ interface Student {
 
 function StudentCard({ naam, achternaam, klas, vak_ratings, id }: Student) {
   return (
-    <div className="flex flex-col lg:flex-row border border-quadrairy rounded-xl justify-between my-4 py-4 px-8 max-w-[1200px]">
+    <div className="flex flex-col lg:flex-row border border-quadrairy rounded-xl justify-between my-4 py-8 px-8 max-w-[1200px]">
       <div className="flex flex-col lg:w-[40%]">
         <Typography variant='muted' className="text-dark lg:text-lg text-lg">{naam} {achternaam}</Typography>
         <Typography variant='muted' className="text-muted lg:text-[16px] text-sm mt-2">Klas: {klas}</Typography>
@@ -73,7 +73,7 @@ function StudentCard({ naam, achternaam, klas, vak_ratings, id }: Student) {
             <div  key={id}  style = {{backgroundColor: color}} className="rounded-lg">
               <Link href = {`/authenticated/leerling-overzicht/${id}/${vak_rating.vak.naam}`} 
                 className={`flex-1 `}>
-                <Typography variant='muted' className="text-white lg:text-[14px] text-sm px-4 mt-2 truncate text-center">
+                <Typography variant='muted' className="text-white text-[12px] px-4 text-center">
                   {vak_rating.vak.naam.slice(0,2)}: {vak_rating.cijfer}
                 </Typography>
               </Link>
