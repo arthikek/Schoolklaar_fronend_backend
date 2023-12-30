@@ -70,8 +70,8 @@ function StudentCard({ naam, achternaam, klas, vak_ratings, id }: Student) {
         {
           const color = getGradeColor(vak_rating.cijfer);
           return (
-            <div style = {{backgroundColor: color}} className="rounded-lg">
-              <Link href = {`/authenticated/leerling-overzicht/${id}/${vak_rating.vak.naam}`} key={id} 
+            <div  key={id}  style = {{backgroundColor: color}} className="rounded-lg">
+              <Link href = {`/authenticated/leerling-overzicht/${id}/${vak_rating.vak.naam}`} 
                 className={`flex-1 `}>
                 <Typography variant='muted' className="text-white lg:text-[14px] text-sm px-4 mt-2 truncate text-center">
                   {vak_rating.vak.naam.slice(0,2)}: {vak_rating.cijfer}
