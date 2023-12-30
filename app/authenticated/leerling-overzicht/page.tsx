@@ -65,23 +65,19 @@ function StudentCard({ naam, achternaam, klas, vak_ratings, id }: Student) {
         <Typography variant='muted' className="text-dark lg:text-lg text-lg">{naam} {achternaam}</Typography>
         <Typography variant='muted' className="text-muted lg:text-[16px] text-sm mt-2">Klas: {klas}</Typography>
       </div>
-      <div className="grid grid-cols-3 lg:grid-cols-5 mt-4 lg:mt-0 gap-y-0 items-center justify-center text-center">
+      <div className="grid grid-cols-3 lg:grid-cols-5 mt-4 lg:mt-0 gap-2 items-center justify-center text-center">
         {vak_ratings.map((vak_rating, index) => 
         {
           const color = getGradeColor(vak_rating.cijfer);
           return (
-            // Apply left border starting from the second item
-            index < vak_ratings.length - 5 ? 
-            <div style = {{backgroundColor: color}}>
+            <div style = {{backgroundColor: color}} className="rounded-lg">
               <Link href = {`/authenticated/leerling-overzicht/${id}/${vak_rating.vak.naam}`} key={id} 
-                className={`flex-1 ${index % 5 > 0 ? 'border-l border-primary' : ''} `}>
-                <Typography variant='muted' className="text-muted lg:text-[14px] text-sm px-4 mt-2 truncate text-center">
+                className={`flex-1 `}>
+                <Typography variant='muted' className="text-white lg:text-[14px] text-sm px-4 mt-2 truncate text-center">
                   {vak_rating.vak.naam.slice(0,2)}: {vak_rating.cijfer}
                 </Typography>
               </Link>
             </div>
-            : <hr className=""/>
-  
           )})}
       </div>
     </div>
