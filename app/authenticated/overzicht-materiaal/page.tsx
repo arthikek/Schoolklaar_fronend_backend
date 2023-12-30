@@ -105,7 +105,7 @@ function CourseComponent({item, classPerSubject} : any) {
 
   
   return (
-    <div className='flex flex-col lg:flex-row justify-between items-center max-w-[1200px] border-b-[1px] border-[#CBCBCB]'>
+    <div className='flex flex-col lg:flex-row justify-between lg:items-center max-w-[1200px] border-b-[1px] border-[#CBCBCB]'>
 
       <div className='grid grid-cols-2 justify-center items-center py-8'>
         <Image 
@@ -124,7 +124,7 @@ function CourseComponent({item, classPerSubject} : any) {
         </div>
       </div>
 
-      <div onClick = {() => console.log('clicked')} className='border-[1px] border-[#CBCBCB] px-5 py-2 rounded-xl flex items-center justify-center hover:font-bold'>
+      <div onClick = {() => console.log('clicked')} className='border-[1px] mb-4 lg:mb-0 border-[#CBCBCB] px-5 py-2 rounded-xl flex items-center justify-center hover:font-bold'>
         <Link href = {`/authenticated/overzicht-materiaal/${item}`}>
           <Typography variant = 'muted' className='text-dark hover:font-bold'>Bekijk documenten</Typography>
         </Link>
