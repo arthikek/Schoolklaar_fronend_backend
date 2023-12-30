@@ -55,7 +55,7 @@ export default function SearchBar({ className, students }: any) {
   console.log('results', results);
 
   return (
-    <div className='relative mt-0 hidden lg:inline-flex' ref={searchBarRef}>
+    <div className='relative mt-0' ref={searchBarRef}>
       <div
         className={cn(
           'border-[1px] p-4 py-3 border-quadrairy rounded-xl min-w-[150px] lg:min-w-[400px] max-w-[600px] flex-row flex items-center justify-between',
