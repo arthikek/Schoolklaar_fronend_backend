@@ -27,7 +27,6 @@ export default function SessieDetails(){
   
     const Sessies:Sessie[] = generalContext?.sessies
    
-    console.log(Sessies)
     return (
         <div>
             <ToastContainer />
