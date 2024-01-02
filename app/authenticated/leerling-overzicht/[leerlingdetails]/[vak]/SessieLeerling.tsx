@@ -9,8 +9,7 @@ import Typography from "@/components/typography";
 
 export default function SessieLeerling({vak_rating} : any) {
 
-    console.log('vak_rating', vak_rating)
-    console.log('vak_rating', vak_rating.histories)
+
     return (
         <div className='flex flex-col gap-4'>
             <div className='flex justify-between mx-2'>

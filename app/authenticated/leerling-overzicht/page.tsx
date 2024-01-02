@@ -16,6 +16,8 @@ export default async function Home({ Component, pageProps }: AppProps) {
   //TODO: ADD FILTER FUNCTION
   // NEED TO SPLIT UP COMPONENT INTO SMALLER COMPONENTS AND MODIFY students
   return (
+    //TODO add standard screen when no subjects are selected for a student
+    //TODO add a section where standard sessions are rendered for a student (VAak:Algemeen)
       <section className="min-h-screen w-full">
         <Typography variant = 'title' className={`text-quintary lg:text-4xl font-medium ${poppins.className}`}>Leerling Overzicht</Typography>
         <Typography variant = 'muted' className={`text-[#8D94A0] mt-4 lg:text-md ${poppins.className} max-w-[1200px]`}>Op deze pagina kan je vertellen hoe een leerling zich gedraagt in de les
@@ -34,15 +36,19 @@ export default async function Home({ Component, pageProps }: AppProps) {
         </div>
         <div className="mt-6 max-w-[1200px] flex flex-col">
           {students.map(student => (
-            <Link href={`/authenticated/leerling-overzicht/${student.id}`} key={student.id}>
-              <StudentCard 
-                id={student.id}
-                naam={student.naam}
-                achternaam={student.achternaam}
-                klas={student.klas}
-                vak_ratings={student.vak_ratings}
-              />
-            </Link>
+            <div className="py-3 " key={student.id}>{
+               //TODO add more styling to the student card and make the rendering of the subjects resonsive
+            }
+              <Link href={`/authenticated/leerling-overzicht/${student.id}`} key={student.id}>  
+                <StudentCard
+                  id={student.id}
+                  naam={student.naam}
+                  achternaam={student.achternaam}
+                  klas={student.klas}
+                  vak_ratings={student.vak_ratings}
+                />
+              </Link>
+            </div>
           ))}
         </div>
       </section>

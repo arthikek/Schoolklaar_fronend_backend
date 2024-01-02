@@ -16,7 +16,6 @@ const LoginForm = () => {
   });
 
   const handleGoogleSignIn = () => {
-    console.log("google sign in");
     signIn("google", { callbackUrl: `${window.location.origin}/authenticated/maak-sessie` });
   };
 

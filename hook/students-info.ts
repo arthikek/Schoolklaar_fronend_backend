@@ -37,7 +37,6 @@ export const fetchStudent = async (): Promise<Student> => {
         throw new Error("Access token not found");
     }
   
-    console.log('route', process.env.NEXTAUTH_BACKEND_URL_MODEL_API + "Login/api/student_detail/")
     const response = await fetch(
       process.env.NEXTAUTH_BACKEND_URL_MODEL_API + "Login/api/student_detail/",
       {
@@ -49,7 +48,6 @@ export const fetchStudent = async (): Promise<Student> => {
       }
     );
   
-    console.log('response', response )
     if (!response.ok) {
       throw new Error("Network response was not ok");
   }
@@ -73,7 +71,6 @@ export const getStudent = async (leerlingdetails : any): Promise<Student> => {
       throw new Error("Access token not found");
   }
 
-  console.log('route', process.env.NEXTAUTH_BACKEND_URL_MODEL_API + "Login/api/student_detail/" + leerlingdetails)
   const response = await fetch(
     process.env.NEXTAUTH_BACKEND_URL_MODEL_API + "Login/api/student_detail/"  + leerlingdetails,
     {
@@ -85,7 +82,6 @@ export const getStudent = async (leerlingdetails : any): Promise<Student> => {
     }
   );
 
-  console.log('response', response )
   if (!response.ok) {
     throw new Error("Network response was not ok");
 }

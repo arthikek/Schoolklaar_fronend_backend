@@ -13,7 +13,6 @@ export const useIndividualLeerlingDetails = (slug: Number , session: ExtendedSes
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
-  console.log('session 2', session)
 
 
 

@@ -14,7 +14,6 @@ interface PageProps {
 export default async function Page ({params: {leerlingdetails}} : PageProps ) {
     const studentDetails = await getStudent(leerlingdetails)
 
-    console.log('studentDetails', studentDetails)
     // Assuming the slug is named "leerling-details" based on the filename
     
 

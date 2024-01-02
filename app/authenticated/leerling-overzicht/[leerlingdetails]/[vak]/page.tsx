@@ -30,9 +30,7 @@ export default async function Page ({params: {leerlingdetails, vak}} : PageProps
         return <div>Loading...</div>;
     }
     
-    console.log('vak', vak)
-    console.log('hist', vak_rating.histories)
-    console.log('sessie_vak', sessie_vak)
+
     return (
         <section>
             <ToastContainer />

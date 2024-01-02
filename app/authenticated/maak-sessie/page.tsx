@@ -85,11 +85,11 @@ export default function LogSession(){
     
           // If there's a file, append it to the FormData object
        
-          console.log(formDataObj_2)
           const response = await fetch(
             process.env.NEXT_PUBLIC_NEXTAUTH_BACKEND_URL_MODEL_API +
-              "Login/api/add_sessie_2/",
+              "Login/api/add_sessie/",
             {
+              
               method: "POST",
               headers: {
                 Authorization: `Bearer ${session?.accessToken}`,
@@ -103,7 +103,6 @@ export default function LogSession(){
           }
     
           const data = await response.text(); // Parse the response as JSON
-          console.log(data)
           toast.success('Bericht Gestuurd!');  //TODO: THis should be done more smootly isntead of using a full reload
           return data;
         } catch (err) {
